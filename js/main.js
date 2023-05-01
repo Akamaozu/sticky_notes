@@ -44,6 +44,9 @@ document.addEventListener("DOMContentLoaded", function() {
             noteModal.style.display = 'none'
             successModal.style.display = "block";
         }
+
+        console.log({ notes_container_length: notesContainer.childNodes.length, first_note_text: notesText.innerHTML })
+
         if(notesContainer.childNodes.length > 1 || notesText.innerHTML != ''){
             const new_note = create_new_note( textBox.value )
             notesContainer.appendChild( new_note )
@@ -112,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
         + '</div>' 
         + '<div class="footer-ish">'
          + '<div>'
-          + `<p id="date-time">${ note_creation_time.month } ${ note_creation_time.day }, ${ note_creation_time.year }</p>`
+          + `<p id="date-time">${ monthArr[ note_creation_time.month ] } ${ note_creation_time.day }, ${ note_creation_time.year }</p>`
          + '</div>'
          + '<div class="notes-icons">'
           + '<input id="note-color-picker" type="color" style="display: none;">'
