@@ -44,11 +44,11 @@ document.addEventListener("DOMContentLoaded", function() {
             noteModal.style.display = 'none'
             successModal.style.display = "block";
         }
-        if(notesContainer.childNodes.length > 3){
+        if(notesContainer.childNodes.length > 1 || notesText.innerHTML != ''){
             const new_note = create_new_note( textBox.value )
             notesContainer.appendChild( new_note )
 
-        } else{
+        } else {
             notesText.innerHTML = textBox.value;
             notesContainer.appendChild(notes)
         }
