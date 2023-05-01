@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", function() {
             successModal.style.display = "block";
         }
         if(notesContainer.childNodes.length > 3){
-            notesContainer.appendChild(notes)
-            notesText.innerHTML = textBox.value;
+            const new_note = create_new_note( textBox.value )
+            notesContainer.appendChild( new_note )
 
         } else{
             notesText.innerHTML = textBox.value;
@@ -89,6 +89,39 @@ document.addEventListener("DOMContentLoaded", function() {
           noteColorPicker.style.display = "none"
          
         }  
+    }
+  
+    function create_new_note( note_content ) {
+       const note = document.createElement('div')
+
+       const now = new Date()
+       const note_creation_time = {
+         day: now.getDate(),
+         month: now.getMonth(),
+         year: now.getFullYear(),
+       }
+       
+       note.id = 'notes'
+       note.classList.add( 'notes' )
+
+       note.innerHTML = ''
+        + '<div>'
+         + '<p id="notes-text" class="notes-text">'
+          + `${ note_content }`
+         + '</p>'
+        + '</div>' 
+        + '<div class="footer-ish">'
+         + '<div>'
+          + `<p id="date-time">${ note_creation_time.month } ${ note_creation_time.day }, ${ note_creation_time.year }</p>`
+         + '</div>'
+         + '<div class="notes-icons">'
+          + '<input id="note-color-picker" type="color" style="display: none;">'
+          + '<img id="brush-button" src="/brush-2.svg">'
+          + '<img id="delete-note" src="/trash.svg">'
+         + '</div>'
+        + '</div>'
+
+       return note
     }
   });
 
