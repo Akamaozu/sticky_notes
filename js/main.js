@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         console.log({ notes_container_length: notesContainer.childNodes.length, first_note_text: notesText.innerHTML })
 
-        if(notesContainer.childNodes.length > 1 || notesText.innerHTML != ''){
+        if(!notesText || (notesText && notesText.innerHTML != '')){
             const new_note = create_new_note( textBox.value )
             notesContainer.appendChild( new_note )
 
